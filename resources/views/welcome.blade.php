@@ -2,10 +2,11 @@
 @section('title','HostFriends')
 
 
-@include('partials-frontend.header-home') 
 
 
 @section('content')
+@include('partials-frontend.header-home') 
+
 
 
 		<section class="hero_single version_2" >

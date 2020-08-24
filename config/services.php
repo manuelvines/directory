@@ -16,9 +16,8 @@ return [
     'facebook' => [
         'client_id' => '284674742605509',
         'client_secret' => '30a34f6ec23585b544d6face21ae0c41',
-        'redirect' => 'http://localhost:8000/auth/facebook/callback'
-         
-        //'redirect' => 'https://hostfriendstravel.com/hostfriends/public/auth/facebook/callback'
+        //'redirect' => 'http://localhost:8000/auth/facebook/callback'
+        'redirect' => 'https://www.hostfriendstravel.com/auth/facebook/callback'
         
     ],
 

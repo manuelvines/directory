@@ -1,16 +1,16 @@
 @extends('layouts.frontend')
 @section('title','HostFriends')
+@section('content')
 
 @include('partials-frontend.header-detail') 
 
-@section('content')
 <main>		
 	
 		<nav class="secondary_nav sticky_horizontal_2">
 			<div class="container">
 				<ul class="clearfix">
 					<li><a href="#description" class="active">Description</a></li>
-					<li><a href="#reviews">Reviews</a></li>
+					<li><a href="#reviews">Reviewss</a></li>
 					<li><a href="#sidebar">Booking</a></li>
 				</ul>
 			</div>
@@ -28,7 +28,7 @@
 						<section id="description">
 							<div class="detail_title_1">
 
-							    <img src="{{ $user->avatar }}" alt="{{ $user->avatar }}" class="img-fluid rounded-circle">
+							    <img src="{{ $user->avatar }}" alt="{{ $user->avatar }}" class="img-fluid rounded-circle" style="max-width:100px;">
 
 								<div class="cat_star mt-3"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
 								<h1>{{  $user->name  }}</h1>
@@ -316,5 +316,4 @@
 		<!-- /container -->
 		
 	</main>
-
 @endsection

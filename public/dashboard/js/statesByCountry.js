@@ -5,7 +5,10 @@ $("#country_id").change(function() {
     let $id = $("#country_id").val();
 
     $.ajax({
-        url: "http://localhost:8000/statesByCountry/" + $id,
+
+        url: "http://hostfriendstravel.com/statesByCountry/" + $id,
+
+        //url: "http://localhost:8000/statesByCountry/" + $id,
         type: "GET", // podría ser get, post, put o delete.
         data: {}, // datos a pasar al servidor, en caso de necesitarlo
         dataType: 'JSON',

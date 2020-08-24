@@ -1,9 +1,8 @@
 @extends('layouts.frontend')
 @section('title','HostFriends')
-
-@include('partials-frontend.header-detail') 
-
 @section('content')
+ @include('partials-frontend.header-detail') 
+
 <main>		
 	
 		<nav class="secondary_nav sticky_horizontal_2">
@@ -81,7 +80,7 @@
 							<h5 class="add_bottom_15">Información del Friend</h5>
 							
                             <a href="{{ route('friend', $user->id) }}">
-                            <img src="{{  $user->avatar }}" alt="" class="img-fluid img-fluid rounded-circle">
+                            <img src="{{  $user->avatar }}" alt="" class="img-fluid img-fluid rounded-circle" style="max-width:100px;">
                             </a>
                             <p>{{ $user->name }}</p>
 

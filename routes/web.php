@@ -25,9 +25,9 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
 Route::view('detalle','welcome')->name('detalle');
-
-
 Route::view('filtro','frontend.filter')->name('filtro');
+Route::view('aviso-privacidad','frontend.aviso-privacidad');
+
 
 Auth::routes();
 

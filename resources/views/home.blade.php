@@ -44,7 +44,7 @@
           <ul class="text-left">
              <li class="mt-3"><a href=""><h6>Términos del servicio</h6></a></li>
 
-             <li class="mt-3"><a href=""><h6>Cerrar la sessión</h6></a></li>
+             <li class="mt-3"><a href="{{ url('/logout') }}"><h6>Cerrar la sessión</h6></a></li>
           </ul>
     </div>
 </div>
