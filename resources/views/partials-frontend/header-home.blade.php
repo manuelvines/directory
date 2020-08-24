@@ -20,7 +20,7 @@
                 <li>
                   
 
-                    @if( Auth::user()->source  == "system")
+                    @if( Auth::user()->avatar  == "avatar.jpg")
 							    <a href="{{ route('home')  }}">
 								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ asset('frontend/img/avatar.jpg') }}" alt="{{ Auth::user()->name }}">
 								</a> 

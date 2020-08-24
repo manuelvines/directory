@@ -8,9 +8,9 @@
 		<nav class="secondary_nav sticky_horizontal_2">
 			<div class="container">
 				<ul class="clearfix">
-					<li><a href="#description" class="active">Description</a></li>
+					<li><a href="#description" class="active">Holme</a></li>
 					<li><a href="#reviews">Reviews</a></li>
-					<li><a href="#sidebar">Booking</a></li>
+				
 				</ul>
 			</div>
 		</nav>
@@ -39,9 +39,9 @@
                             <h5 class="add_bottom_15">Descripción</h5>
 							<div class="row ">
 								<div class="col-lg-12 text-justify">
-
+                                    <pre>
                                    {!! $experience->description !!}
-
+                                     </pre>
 								</div>
 							
 							</div>	
@@ -50,7 +50,9 @@
                             <h5 class="add_bottom_15">Restricciones</h5>
 							<div class="row">
 								<div class="col-lg-12 text-justify">
+								<pre>
                                 {!! $experience->restrictions  !!}
+								</pre>
                                 </div>
 						    </div>
 

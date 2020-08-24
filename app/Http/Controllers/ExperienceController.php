@@ -194,6 +194,11 @@ class ExperienceController extends Controller
 
         $experience->user_id  = Auth::ID();
 
+        $experience->$estimated_price_per_person = $request->estimated_price_per_person;
+ 
+        $experience->country_id = $request->country_id;
+
+        $experience->state_id = $request->state_id;
 
         $experience->save();
 

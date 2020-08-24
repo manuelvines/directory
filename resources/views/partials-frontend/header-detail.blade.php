@@ -13,9 +13,30 @@
                     </div>
                     <div class="col-lg-9 col-12">
                         <ul id="top_menu">
-                            <li><a href="account.html" class="btn_add">Add Listing</a></li>
-                            <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
-                            <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+                            <li><a href="account.html" class="btn_add">Explorar</a></li>
+                           
+                            @guest
+                <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
+                @else
+                
+                <li>
+                  
+
+                    @if( Auth::user()->avatar  == "avatar.jpg")
+							    <a href="{{ route('home')  }}">
+								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ asset('frontend/img/avatar.jpg') }}" alt="{{ Auth::user()->name }}">
+								</a> 
+							 @else
+								<a href="{{ route('home')  }}">
+								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
+								</a> 
+                             @endif
+
+
+                </li>
+    
+                @endguest
+                        
                         </ul>
                         <!-- /top_menu -->
                         <a href="#menu" class="btn_mobile">

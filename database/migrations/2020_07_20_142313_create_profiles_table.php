@@ -19,22 +19,21 @@ class CreateProfilesTable extends Migration
             $table->string('alternative_email')->nullable();
             $table->string('birth')->nullable();
             $table->longText('bio')->nullable();
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->string('emergency_numbre')->nullable();
 
 
-            
-            /*
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            
             $table->unsignedBigInteger('country_id')->nullable();
-            $table->unsignedBigInteger('state_id')->nullable();
+            //$table->unsignedBigInteger('state_id')->nullable();
 
             $table->unsignedBigInteger('user_id')->unique();
 
          
             $table->foreign('country_id')->references('id')
             ->on('countries');
-            
+            /*
             $table->foreign('state_id')->references('id')
             ->on('states');
  */

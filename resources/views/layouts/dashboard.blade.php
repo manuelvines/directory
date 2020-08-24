@@ -15,7 +15,6 @@
 	<link rel="stylesheet" href="{{ asset('dashboard/css/swiper.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('dashboard/css/style.css') }}">
 
-	<script src="//cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
 
 </head>
 <body>
@@ -26,7 +25,7 @@
 			<a href="#menu" class="link menu-link"><i class="icon ion-ios-menu"></i></a>
 		</div>
 		<div class="right">
-			<a href="#" class="link">
+			<a href="{{ route('welcome') }}" class="link">
 		
 			<img src="{{ asset('frontend/img/logo/logo-launcher.png') }}" width="165" height="35" alt="" class="logo_sticky">
 
@@ -167,7 +166,7 @@
 						
 						
 							
-								  @if( Auth::user()->source  == "avatar.jpg")
+								  @if( Auth::user()->avatar  == "avatar.jpg")
 										<a href="{{ route('home')  }}">
 										<img style="width:100px; margin: 0 auto;" class="img-fluid rounded-circle"  src="{{ asset('frontend/img/avatar.jpg') }}" alt="{{ Auth::user()->name }}">
 										</a> 

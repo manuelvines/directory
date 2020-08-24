@@ -20,8 +20,7 @@
                
                     <div class="row">
                        <div class="col-xs-12 col-sm-12 col-md-12 form-group">
-                            <label for="">Título de tu experiencia:</label>
-                            <input  class="form-control" type="text" name="title" id="title">
+                            <input  class="form-control" type="text" name="title" id="title" placeholder="Crea un título atractivo para tus futuros Friends">
                         </div>
                     </div>
 
@@ -37,7 +36,7 @@
                     </div>
 
 
-                     <div class="row">
+                     <div class="row pt-2">
                          <div class="col-xs-12 col-sm-12 col-md-12">
                            <p>Ingrese el horario que tienes disponible</p>
                          </div>
@@ -103,7 +102,7 @@
                     <div class="row">
                       <div class="col-xs-12 col-sm-12 col-md-12 form-group">
                          <label for="description">Describe tu experiencía</label>
-                         <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                         <textarea class="form-control"  name="description" id="description" cols="30" rows="10" placeholder="Explica de forma clara y atractiva la experiencia que ofreces"></textarea>
                       
                       </div>
                     </div>
@@ -113,7 +112,7 @@
                     <div class="row">
                       <div class="col-xs-12 col-sm-12 col-md-12 form-group">
                          <label for="description">¿La experiencia tiene restricciones? Agregalas en forma de lista</label>
-                         <textarea name="restrictions" id="restrictions" cols="30" rows="10"></textarea>
+                         <textarea class="form-control"  name="restrictions" id="restrictions" cols="30" rows="10" placeholder="Tu experiencia puede estar restringida puede ser por edad, condición física, salud, mascotas, cámaras profesionales, etc."></textarea>
                       
                       </div>
                     </div>
@@ -121,7 +120,7 @@
                     <div class="row">
                       <div class="col-xs-12 col-sm-12 col-md-12 form-group">
                          <label for="description">Agrega algunos tips de tu experiencia</label>
-                         <textarea name="tips" id="tips" cols="30" rows="10"></textarea>
+                         <textarea class="form-control"  name="tips" id="tips" cols="30" rows="10" placeholder="Ahora regálale consejos a tus Friends como: no llevar una mochila muy pesada, usar bloqueador solar, llevar calzado adecuado, "></textarea>
                       
                       </div>
                     </div>
@@ -130,12 +129,20 @@
                     <div class="row">
                       <div class="col-xs-12 col-sm-12 col-md-12 form-group">
                          <label for="description">Agrega gatos extras</label>
-                         <textarea name="extra_expenses" id="extra_expenses" cols="30" rows="10"></textarea>
+                         <textarea class="form-control" name="extra_expenses" id="extra_expenses" cols="30" rows="10"
+                          placeholder="Describe los gastos que puedan ocurrir durante la experiencia por ejemplo: Transporte……….$120MXN, Éstos datos son únicamente informativos para el Friend y deberán llevar el dinero necesario el día de la experiencia"></textarea>
                       
                       </div>
                     </div>
                  
-          
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12">
+                        <label for="estimated_price_per_person">Precio estimado por persona</label>
+                         <input class="form-control" type="number" step="any" name="estimated_price_per_person" id="estimated_price_per_person">
+                      </div>
+                    </div>
+
+                    
 
          
                           
@@ -157,32 +164,5 @@
      @push('scripts')
     <script src="{{ asset('dashboard/js/statesByCountry.js') }}"></script>
    
-
-
-    <script>
-    // Replace the <textarea> with a CKEditor
-    
-    CKEDITOR.editorConfig = function( config ) {
-      config.language = 'es';
-      config.uiColor = '#F7B42C';
-      config.height = 300;
-      config.toolbarCanCollapse = true;
-    };
-    
-    //CKEDITOR.replace('description');
-    CKEDITOR.replace('restrictions');
-    CKEDITOR.replace('tips');
-    CKEDITOR.replace('extra_expenses');
-
-   
-
-    </script>
-
-
-
 @endpush
-
-
-
-
 @endsection

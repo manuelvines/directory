@@ -22,8 +22,14 @@ class PublicController extends Controller
         
         $profile = $user->profile;
         $languajes = $user->languajes;
-         
         $experiences = $user->experiences;
+
+
+        if($profile == null){
+
+            return redirect()->route('profile.index')
+            ->withSuccess('Antes de visitar tu perfil deberás completar tu perfil.');
+        }
 
         //return $experiences;
      

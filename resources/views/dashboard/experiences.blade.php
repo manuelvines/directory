@@ -19,7 +19,7 @@
                <div class="row shadow-lg p-3">
                    <div class="col-xs-12 col-sm-12 col-md-4 mb-3 text-center">
                       <img src="{{  $experience->experience_thumbnail }}" class="img-fluid">
-                      <a href="º">Ver experiencia</a>
+                      <a href="{{  route('experience', $experience->id )   }}">Ver experiencia</a>
 
                     </div>    
                     <div class="col-xs-12 col-sm-12 col-md-8">

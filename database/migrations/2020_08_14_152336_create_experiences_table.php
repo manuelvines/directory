@@ -30,9 +30,10 @@ class CreateExperiencesTable extends Migration
 
             $table->longText('tips')->nullable();
 
-            $table->string("extra_expenses")->nullable();
+            $table->longText("extra_expenses")->nullable();
 
             $table->decimal("price")->nullable();
+            $table->decimal("estimated_price_per_person")->nullable();
 
             
             $table->string('latitude')->nullable();
