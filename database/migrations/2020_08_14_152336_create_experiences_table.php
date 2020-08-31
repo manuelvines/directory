@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreateExperiencesTable extends Migration
 {
     /**
@@ -17,6 +18,9 @@ class CreateExperiencesTable extends Migration
             $table->id();
 
             $table->string('title');
+
+            $table->string('slug')->unique();
+
             $table->string('experience_thumbnail')->nullable();
             $table->string('initial_schedule');
             $table->string('final_schedule');

@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
 use App\Experience;
 use App\User;
 use App\Country;
+use Illuminate\Support\Str as Str;
+
 
 class ExperienceController extends Controller
 {
@@ -35,7 +36,7 @@ class ExperienceController extends Controller
         $experiences = User::find(Auth::ID())->experiences;
         
 
-        return view('dashboard.experiences')
+        return view('dashboard.experience.experiences')
                    ->with('experiences', $experiences);
     }
 
@@ -50,7 +51,7 @@ class ExperienceController extends Controller
                //
                $countries = Country::all(); 
 
-        return view('dashboard.experience')
+        return view('dashboard.experience.experience')
         ->with('countries', $countries);
 
     }
@@ -64,29 +65,39 @@ class ExperienceController extends Controller
     public function store(Request $request)
     {
         //
-     
-
         $this->validate($request, [
             'title' => 'required',
+            'experience_thumbnail' => 'required|image|max:500000',
+
             'initial_schedule' => 'required',
             'final_schedule' => 'required',
             'max_people' => 'required',
             'description' => 'required',
-            'experience_thumbnail' => 'required|image|max:500000'
-
+            'tips' => 'required',
+            'country_id' => 'required',
+            'state_id' => 'required'
             
         ]);
+
+        
+        $experience = Experience::where('slug', Str::slug($request->title) )->get();
+
+        
+        if($experience){
+
+            return redirect()->back()->withErrors(['Ya existe un experiencia con el mismo nombre, intenta modificarlo un poco']);
+        }
+
+
         
         if($request->file('experience_thumbnail')){
             $path = Storage::disk('public')->put('experiences' , $request->file('experience_thumbnail') );
-           
-            
-       }
+        }
 
         $experience = new Experience;
 
         $experience->title  = $request->title;
-
+        $experience->slug    = Str::slug($request->title);  
 
         $experience->experience_thumbnail = asset($path);
 
@@ -102,11 +113,17 @@ class ExperienceController extends Controller
         $experience->tips = $request->tips;
 
         $experience->extra_expenses = $request->extra_expenses;
+        
+        $experience->country_id = $request->country_id;
 
+        $experience->state_id = $request->state_id;
+        
         $experience->price = $request->price;
 
-        $experience->user_id  = Auth::ID();
+        $experience->estimated_price_per_person = $request->estimated_price_per_person; 
 
+        $experience->user_id  = Auth::ID();
+       
 
         $experience->save();
 
@@ -142,7 +159,7 @@ class ExperienceController extends Controller
         $experience = Experience::where('user_id', Auth::ID())
          ->where('id',$id)->first();
 
-         return view('dashboard.experience-edit')
+         return view('dashboard.experience.experience-edit')
          ->with('experience', $experience)
          ->with('countries', $countries);
 
@@ -162,10 +179,14 @@ class ExperienceController extends Controller
 
         $this->validate($request, [
             'title' => 'required',
+          
             'initial_schedule' => 'required',
             'final_schedule' => 'required',
             'max_people' => 'required',
             'description' => 'required',
+            'tips' => 'required',
+            'country_id' => 'required',
+            'state_id' => 'required'
 
             
         ]);
@@ -194,12 +215,12 @@ class ExperienceController extends Controller
 
         $experience->user_id  = Auth::ID();
 
-        $experience->$estimated_price_per_person = $request->estimated_price_per_person;
+        $experience->estimated_price_per_person = $request->estimated_price_per_person;
  
         $experience->country_id = $request->country_id;
 
         $experience->state_id = $request->state_id;
-
+        
         $experience->save();
 
 

@@ -15,4 +15,17 @@ class Country extends Model
          return $this->hasMany('App\Profile');
     }
 
+    public function states(){
+        return $this->hasMany('App\State');
+
+    }
+
+    public function experiences(){
+        return $this->hasMany('App\Experience');
+    }
+
+    public function users(){
+        return $this->hasMany('App\User');
+    }
+
 }

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dasboardvertical')
 @section('title','HostFriends')
 @section('content')
 

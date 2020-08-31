@@ -13,5 +13,13 @@ class State extends Model
         return $this->hasMany('App\Profile');
     }
 
+    public function country(){
+        return $this->belongsTo('App\Country');
+    }
+
+    public function experiences(){
+        return $this->hasMany('App\Experience');
+    }
+
 
 }

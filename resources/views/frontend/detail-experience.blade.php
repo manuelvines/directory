@@ -8,7 +8,7 @@
 		<nav class="secondary_nav sticky_horizontal_2">
 			<div class="container">
 				<ul class="clearfix">
-					<li><a href="#description" class="active">Holme</a></li>
+					<li><a href="#description" class="active">Experiencia en: {{ $country->name }}, {{ $state->name }} </a></li>
 					<li><a href="#reviews">Reviews</a></li>
 				
 				</ul>
@@ -30,29 +30,36 @@
 							    <img src="{{  $experience->experience_thumbnail  }}" alt="Cargando image {{  $experience->title }}" class="img-fluid">
 
 								<div class="cat_star mt-3"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-								<h1>{{  $experience->title   }}</h1>
-								<a class="address" href="">País, Estado</a>
+								<h1>{{  $experience->title   }}, </h1>
+								<a class="address" href="">{{ $country->name }}, {{ $state->name }} </a>
+
 							</div>
 
 
 
                             <h5 class="add_bottom_15">Descripción</h5>
 							<div class="row ">
-								<div class="col-lg-12 text-justify">
-                                    <pre>
+								<div class="col-lg-12 " style="overflow: scroll;">
                                    {!! $experience->description !!}
-                                     </pre>
+                                   
 								</div>
 							
 							</div>	
 
+							<h5 class="add_bottom_15">Disponibilidad de tiempo</h5>
+							<div class="row">
+								<div class="col-lg-12 text-justify">
+								
+                                 <p>Desde: {{ $experience->initial_schedule }}<br>Hasta: {{ $experience->final_schedula }}</p>
+                                </div>
+						    </div>
 
                             <h5 class="add_bottom_15">Restricciones</h5>
 							<div class="row">
 								<div class="col-lg-12 text-justify">
-								<pre>
+								
                                 {!! $experience->restrictions  !!}
-								</pre>
+							
                                 </div>
 						    </div>
 
@@ -61,13 +68,31 @@
 							<div class="row">
 								<div class="col-lg-12 text-justify">
 
-                                   {!! $experience->tips  !!}
+								@guest
+               
+                                      <div class=" shadow-sm mt-5 mb-5" style="border: 1px solid gray; ">
+									        <h2><i class=" icon-lock"></i>	Desbloquea todos los tips para: {{ $experience->title }}</h2>
+											<a  class="social_bt facebook" href="{{ route('social.auth', 'facebook') }}">
+												Continuar con Facebook
+											</a>
+
+									  </div>
+                                          
+
+								 @else
+								    
+								 {!! $experience->tips  !!}
+
+								@endguest
+
+
+                                    
 
 								</div>
 							
 							</div>	
 
-                              <h5 class="add_bottom_15">Gastos Extras</h5>
+                              <h5 class="add_bottom_15">Gastos Extras - Costo estimado por persona ${{ $experience->estimated_price_per_person }} </h5>
 							<div class="row">
 								<div class="col-lg-12 text-justify">
 
@@ -234,45 +259,6 @@
 						<!-- /section -->
 						<hr>
 
-							<div class="add-review">
-								<h5>Leave a Review</h5>
-								<form>
-									<div class="row">
-										<div class="form-group col-md-6">
-											<label>Name and Lastname *</label>
-											<input type="text" name="name_review" id="name_review" placeholder="" class="form-control">
-										</div>
-										<div class="form-group col-md-6">
-											<label>Email *</label>
-											<input type="email" name="email_review" id="email_review" class="form-control">
-										</div>
-										<div class="form-group col-md-6">
-											<label>Rating </label>
-											<div class="custom-select-form">
-											<select name="rating_review" id="rating_review" class="wide">
-												<option value="1">1 (lowest)</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5" selected>5 (medium)</option>
-												<option value="6">6</option>
-												<option value="7">7</option>
-												<option value="8">8</option>
-												<option value="9">9</option>
-												<option value="10">10 (highest)</option>
-											</select>
-											</div>
-										</div>
-										<div class="form-group col-md-12">
-											<label>Your Review</label>
-											<textarea name="review_text" id="review_text" class="form-control" style="height:130px;"></textarea>
-										</div>
-										<div class="form-group col-md-12 add_top_20 add_bottom_30">
-											<input type="submit" value="Submit" class="btn_1" id="submit-review">
-										</div>
-									</div>
-								</form>
-							</div>
 					</div>
 					<!-- /col -->
 					

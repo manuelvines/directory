@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 
 
@@ -40,23 +40,24 @@ Route::get('/friend/{id}','PublicController@publicProfile')->name('friend');
 Route::get('/experiencia/{id}','PublicController@publicExperience')->name('experience');
 
 
-Route::resource('profile','ProfileController');
-Route::resource('experience','ExperienceController');
 
 
 Route::get('/statesByCountry/{id}','StateController@statesByCountry')->name('statesByCountry');
 Route::get('/experiencia','ProductController@index')->name('experiencia');
+Route::resource('experience','ExperienceController');
 
 
 /**
- * Actualizar Foto
+ *  PROFILE SETTING
  */
 Route::get('/change-avatar', 'PhotoController@changeAvatarView' )->name('change-avatar');
 Route::post('/change-update', 'PhotoController@changeAvatarUpdate' )->name('change-update');
-
-/**
- *Verificar documentos 
- */
+Route::resource('profile','ProfileController');
 Route::get('/documents', 'DocumentController@index' )->name('upload-document');
 Route::post('/docs-store', 'DocumentController@store' )->name('store-document');
+Route::get('/geolocation','ProfileController@geolocation')->name('geolocation');
 
+/*
+*Experiencia
+*/
+Route::resource('experience','ExperienceController');

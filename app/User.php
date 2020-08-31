@@ -48,6 +48,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Document');
     }
 
+    public function country(){
+        return $this->belongsTo('App\Country');
+    }
+
     public function languajes()
     {
         return $this->belongsToMany('App\Languaje')->withTimestamps();

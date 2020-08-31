@@ -26,17 +26,17 @@ class CreateProfilesTable extends Migration
             $table->string('longitude')->nullable();
             
             $table->unsignedBigInteger('country_id')->nullable();
-            //$table->unsignedBigInteger('state_id')->nullable();
+            $table->unsignedBigInteger('state_id')->nullable();
 
             $table->unsignedBigInteger('user_id')->unique();
 
          
             $table->foreign('country_id')->references('id')
             ->on('countries');
-            /*
+           
             $table->foreign('state_id')->references('id')
             ->on('states');
- */
+
 
             $table->foreign('user_id')->references('id')
             ->on('users');

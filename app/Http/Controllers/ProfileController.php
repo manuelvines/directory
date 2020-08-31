@@ -36,13 +36,12 @@ class ProfileController extends Controller
         $profile = User::find(Auth::ID())->profile;
         $countries = Country::all(); 
         
+        /**Perfil primera vez */
         if(!$profile){
            
      
             $languajes = Languaje::all();       
-
-             
-            return view('dashboard.profile')
+            return view('dashboard.profile.profile')
                 ->with([
                 'countries'=>$countries, 
                 'languajes' => $languajes
@@ -50,19 +49,20 @@ class ProfileController extends Controller
 
         }
         
-      
- 
+  
+
        $languajes = Languaje::all();    
        $languajes_user = User::find(Auth::ID())->languajes;
-       
-       //return $languajes_user;
+       $states = Country::find($profile->country_id)->states;
+     
 
+      
 
-       return view('dashboard.profile-edit')
+       return view('dashboard.profile.profile-edit')
         ->with([
         'profile'=>$profile,
         'countries'=>$countries, 
-
+        'states' => $states,
         'languajes' => $languajes,
         'languajes_user' => $languajes_user
          ]);
@@ -97,7 +97,9 @@ class ProfileController extends Controller
          
             'alternative_email' => 'required|unique:profiles',
             'birth' => 'required|date',
-            'bio' => 'required'
+            'bio' => 'required',
+            'country_id' => 'required',
+            'languajes' => 'required|min:1'
         ]);
         
      
@@ -107,6 +109,8 @@ class ProfileController extends Controller
         $profile->alternative_email = $request->alternative_email;
         $profile->birth = $request->birth;
         $profile->bio = $request->bio;
+        $profile->country_id = $request->country_id;
+        $profile->state_id = $request->state_id; 
         $profile->user_id = Auth::ID();
 
          
@@ -155,9 +159,10 @@ class ProfileController extends Controller
         //
 
         $this->validate($request, [
-          
             'birth' => 'required|date',
-            'bio' => 'required'
+            'bio' => 'required',
+            'country_id' => 'required',
+            'languajes' => 'required|min:1'
         ]);
         
     
@@ -170,16 +175,20 @@ class ProfileController extends Controller
 
         $profile->user_id = Auth::ID();
 
-                 
+        $profile->country_id = $request->country_id;
+        $profile->state_id = $request->state_id; 
+
         
         $user = User::find(Auth::ID());
         $user->languajes()->sync($request->languajes);
-
-        
         $profile->save();
 
         return redirect()->back()->withSuccess('Información actualizada de forma correcta.');
 
+    }
+
+    public function geolocation(){
+        return view('dashboard.profile.geolocation');
     }
 
     /**

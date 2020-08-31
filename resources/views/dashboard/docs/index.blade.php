@@ -1,10 +1,17 @@
-@extends('layouts.dashboard')
+@extends('layouts.dasboardvertical')
 @section('title','HostFriends')
+@section('title-page','Verificar Identidad')
 @section('content')
     
 <div class="row">
+                                <div class="col-12">
+                                    <div class="card m-b-30">
+                                        <div class="card-body">
+
+
+<div class="row">
           <div class="col-xs-12">
-              <h4>Verificar Identidad</h4>
+           
          </div>  
        </div>
 
@@ -12,8 +19,7 @@
          <div class="col-xs-12 col-sm-12 col-md-12">
 
              <p>
-             Una foto de perfil que muestre tu cara puede ayudar a que los friends te conozcan mejor.
-             Hostfriend requiere que todos los anfitriones tengan una foto de perfil. 
+             Validar tu identidad sirve para verificar que eres la persona quién dices ser, esto ayudará a incrementar la confianza de los Friends, se te otorgará un distintivo de verificación al realizar este paso. 
            
              </p>
          
@@ -71,7 +77,7 @@
 
                         <div class="form-group">
                 
-                        <input type="submit" value="Enviar documentos" class="btn btn-primary">
+                        <input type="submit" value="Enviar documentos" class="btn btn-block btn-naranja">
 
                         </div>
                 
@@ -80,6 +86,9 @@
          </div>
        </div>
 
-
+</div>
+</div>
+</div>
+</div>
 
 @endsection

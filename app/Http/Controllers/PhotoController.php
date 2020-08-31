@@ -23,7 +23,7 @@ class PhotoController extends Controller
 
     public function changeAvatarView()
     {
-         return view('dashboard.change-avatar');
+         return view('dashboard.profile.change-avatar');
     }
 
 
