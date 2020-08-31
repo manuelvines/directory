@@ -79,10 +79,13 @@ class ExperienceController extends Controller
             
         ]);
 
-        
-        $experience = Experience::where('slug', Str::slug($request->title) )->get();
+        $slug = Str::slug($request->title);
 
         
+        $experience = Experience::where('slug',  $slug )->first();
+
+    
+
         if($experience){
 
             return redirect()->back()->withErrors(['Ya existe un experiencia con el mismo nombre, intenta modificarlo un poco']);

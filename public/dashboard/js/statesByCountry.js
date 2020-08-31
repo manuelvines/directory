@@ -25,7 +25,7 @@ $("#country_id").change(function() {
 
             console.log($data);
 
-            for (let $i = 0; $i <= $data.length; $i++) {
+            for (let $i = 0; $i <= $data.length - 1; $i++) {
 
 
                 $("#state_id").append("<option value='" + $data[$i].id + "' >" + $data[$i].name + "</option>");
