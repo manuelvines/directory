@@ -180,7 +180,9 @@ class ProfileController extends Controller
 
         
         $user = User::find(Auth::ID());
+        
         $user->languajes()->sync($request->languajes);
+
         $profile->save();
 
         return redirect()->back()->withSuccess('Información actualizada de forma correcta.');

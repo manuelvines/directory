@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Experience;
 use App\User;
 use App\Country;
+use App\State;
+use App\Tag;
 use Illuminate\Support\Str as Str;
 
 
@@ -32,7 +34,7 @@ class ExperienceController extends Controller
      */
     public function index()
     {
- 
+      
         $experiences = User::find(Auth::ID())->experiences;
         
 
@@ -48,11 +50,13 @@ class ExperienceController extends Controller
     public function create()
     {
         //
-               //
-               $countries = Country::all(); 
+        //
+        $countries  = Country::all(); 
+        $tags       = Tag::all(); 
 
         return view('dashboard.experience.experience')
-        ->with('countries', $countries);
+        ->with('countries', $countries)
+        ->with('tags', $tags);
 
     }
 
@@ -75,24 +79,19 @@ class ExperienceController extends Controller
             'description' => 'required',
             'tips' => 'required',
             'country_id' => 'required',
-            'state_id' => 'required'
+            'state_id' => 'required',
+            'tags' => 'required|min:1'
             
         ]);
 
         $slug = Str::slug($request->title);
-
         
         $experience = Experience::where('slug',  $slug )->first();
-
-    
-
+        
         if($experience){
-
-            return redirect()->back()->withErrors(['Ya existe un experiencia con el mismo nombre, intenta modificarlo un poco']);
+          return redirect()->back()->withErrors(['Ya existe un experiencia con el mismo nombre, intenta modificarlo un poco']);
         }
 
-
-        
         if($request->file('experience_thumbnail')){
             $path = Storage::disk('public')->put('experiences' , $request->file('experience_thumbnail') );
         }
@@ -126,10 +125,13 @@ class ExperienceController extends Controller
         $experience->estimated_price_per_person = $request->estimated_price_per_person; 
 
         $experience->user_id  = Auth::ID();
-       
 
         $experience->save();
 
+        $experience = Experience::find($experience->id);
+        $experience->tags()->sync($request->tags);
+
+    
 
         return redirect()->back()->withSuccess('Información actualizada de forma correcta.');
 
@@ -156,15 +158,22 @@ class ExperienceController extends Controller
     public function edit($id)
     {
         //
-          
-        $countries = Country::all();
-         
-        $experience = Experience::where('user_id', Auth::ID())
+         $experience = Experience::where('user_id', Auth::ID())
          ->where('id',$id)->first();
+
+         $countries = Country::all();
+         $states = State::where('country_id', $experience->country_id)->get();
+             
+         $tags = Tag::all();
+         $experiences_tags = Experience::find($experience->id)->tags;
+       
 
          return view('dashboard.experience.experience-edit')
          ->with('experience', $experience)
-         ->with('countries', $countries);
+         ->with('countries', $countries)
+         ->with('tags', $tags)
+         ->with('experiences_tags', $experiences_tags)
+         ->with('states', $states);
 
 
     }
@@ -189,7 +198,8 @@ class ExperienceController extends Controller
             'description' => 'required',
             'tips' => 'required',
             'country_id' => 'required',
-            'state_id' => 'required'
+            'state_id' => 'required',
+            'tags' => 'required|min:1'
 
             
         ]);
@@ -224,7 +234,12 @@ class ExperienceController extends Controller
 
         $experience->state_id = $request->state_id;
         
+
+
         $experience->save();
+
+        $experience = Experience::find($experience->id);
+        $experience->tags()->sync($request->tags);
 
 
         return redirect()->back()->withSuccess('Información actualizada de forma correcta.');

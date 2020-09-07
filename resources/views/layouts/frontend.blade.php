@@ -28,6 +28,19 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
 
+	<style>
+	.btn-naranja{
+            background-color:#eb4d32;
+            color:white;
+
+		 }
+		 .btn-naranja:hover{
+            background-color:#eb4d32;
+            color:white;
+
+         }
+	</style>
+
 </head>
 <body>
 
@@ -61,12 +74,8 @@
 					<h3 data-target="#collapse_ft_2">Categorias</h3>
 					<div class="collapse dont-collapse-sm" id="collapse_ft_2">
 						<ul class="links">
-							<li><a href="#0">Shops</a></li>
-							<li><a href="#0">Hotels</a></li>
-							<li><a href="#0">Restaurants</a></li>
-							<li><a href="#0">Bars</a></li>
-							<li><a href="#0">Events</a></li>
-							<li><a href="#0">Fitness</a></li>
+							
+		
 						</ul>
 					</div>
 				</div>
@@ -138,7 +147,7 @@
 	<!-- Sign In Popup -->
 	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
 		<div class="small-dialog-header">
-			<h3>Registrarse</h3>
+			<h3>Iniciar Sesión</h3>
 		</div>
 		<form  action="{{ route('register') }}" method="POST">
 		@csrf
@@ -147,11 +156,13 @@
 
 
 					<a  class="social_bt facebook" href="{{ route('social.auth', 'facebook') }}">
-						Facebook
+						Continuar con Facebook
 					</a>
-                    <!--       
-				    <a href="#0" class="social_bt google">Iniciar sesión con  Google</a>
-                     -->
+                         
+				    <a href="#0" class="social_bt google">
+					    Continuar con Google
+					</a>
+                   
 
 				<div class="divider"><span>O</span></div>
 				<div class="form-group">

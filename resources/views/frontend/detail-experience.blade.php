@@ -54,7 +54,7 @@
                                 </div>
 						    </div>
 
-                            <h5 class="add_bottom_15">Restricciones</h5>
+                            <h5 class="add_bottom_15">Restricciones - Máximo de Personas: {{ $experience->max_people }}</h5>
 							<div class="row">
 								<div class="col-lg-12 text-justify">
 								
@@ -265,51 +265,29 @@
 					<aside class="col-lg-4" id="sidebar">
 						<div class="box_detail booking">
 							<div class="price">
-								<span>45$ <small>person</small></span>
-								<div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div>
+								<span>45$ <small>por hora</small></span>
+								
+								
+								<div class="score"><span>Good<em>50 Reseñas</em></span><strong>4.5</strong></div>
+								
 							</div>
 
 							<div class="form-group" id="input-dates">
-								<input class="form-control" type="text" name="dates" placeholder="When..">
+								<input class="form-control" type="date" name="dates" min="{{ Date('y/m/d') }}" required>
 								<i class="icon_calendar"></i>
 							</div>
 
-							<div class="dropdown">
-								<a href="#" data-toggle="dropdown">Guests <span id="qty_total">0</span></a>
-								<div class="dropdown-menu dropdown-menu-right">
-									<div class="dropdown-menu-content">
-										<label>Adults</label>
-										<div class="qty-buttons">
-											<input type="button" value="+" class="qtyplus" name="adults">
-											<input type="text" name="adults" id="adults" value="0" class="qty">
-											<input type="button" value="-" class="qtyminus" name="adults">
-										</div>
-									</div>
-									<div class="dropdown-menu-content">
-										<label>Childrens</label>
-										<div class="qty-buttons">
-											<input type="button" value="+" class="qtyplus" name="child">
-											<input type="text" name="child" id="child" value="0" class="qty">
-											<input type="button" value="-" class="qtyminus" name="child">
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- /dropdown -->
-
+				
 							<div class="form-group clearfix">
 								<div class="custom-select-form">
-									<select class="wide">
-										<option>Room Type</option>	
-										<option>Single Room</option>
-										<option>Double Room</option>
-										<option>Suite Room</option>
-									</select>
+								    <input type="number" name="people" id="people" min="1" max="{{  $experience->max_people  }}" class="form-control " required>
 								</div>
 							</div>
-							<a href="checkout.html" class=" add_top_30 btn_1 full-width purchase">Purchase</a>
-							<a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> Add to wishlist</a>
-							<div class="text-center"><small>No money charged in this step</small></div>
+
+							<input type="submit" value="Reservar" class="btn btn-block btn-naranja">
+					
+
+							<div class="text-center"><small>Aún no se te cobrará nada</small></div>
 						</div>
 						<ul class="share-buttons">
 							<li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>

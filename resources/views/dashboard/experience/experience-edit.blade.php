@@ -34,6 +34,51 @@
                       </div>
                     </div>
 
+
+                    <div class="form-group row">
+                    <label for="experience_thumbnail" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Tags</label>
+                      <div class="col-sm-10">
+                                  
+
+
+                        {{ $flag = false }}
+                        @foreach($tags as $tag)
+                           @foreach($experiences_tags as $experience_tag)
+
+                              
+                                 @if($tag->id === $experience_tag->id)
+                                      <div class="checkbox my-2">
+                                          <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" checked class="custom-control-input"  id="customCheck{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
+                                            <label class="custom-control-label" for="customCheck{{ $tag->id }}" >{{ $tag->name }} </label>
+                                          </div>
+                                      </div>
+
+                                      <?php $flag = true ?>
+                                      @break
+                                      @endif
+
+                            @endforeach    
+
+                            
+                            @if(!$flag)
+                                              
+                                      <div class="checkbox my-2">
+                                          <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"  class="custom-control-input"  id="customCheck{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
+                                            <label class="custom-control-label" for="customCheck{{ $tag->id }}" >{{ $tag->name }} </label>
+                                          </div>
+                                      </div>
+                            @else
+                            {{ $flag = false }}
+                            @endif       
+                        @endforeach
+
+
+
+                      </div>
+                    </div>
+
                   
 
                      <div class="row">
@@ -69,11 +114,15 @@
                             <label for="" class="col-sm-2 col-form-label"><span class="text-danger">*</span>País:</label>
                             <div class="col-sm-10">
                               <select name="country_id" id="country_id" class="form-control">
-                                    <option value="">Selecciona una opción</option>
                                     @foreach($countries as $country)
-                                    <option value=" {{  $country->id }}">
-                                      {{  $country->name }}
-                                    </option>
+
+                                      @if($country->id == $experience->country_id)
+                                        <option value=" {{  $country->id }}" selected="selected">{{  $country->name }}</option>
+                                      @else
+                                      <option value=" {{  $country->id }}">{{  $country->name }}</option>
+
+                                      @endif
+                                    
                                     @endforeach
                               </select>
                             </div>
@@ -83,6 +132,16 @@
                          <label  for="" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Estado</label>
                             <div class="col-sm-10">
                              <select name="state_id" id="state_id" class="form-control">
+                             @foreach($states as $state)
+
+                                  @if($state->id == $experience->state_id)
+                                    <option value=" {{  $state->id }}" selected="selected">{{  $state->name }}</option>
+                                  @else
+                                  <option value=" {{  $state->id }}">{{  $state->name }}</option>
+
+                                  @endif
+
+                              @endforeach
                              </select> 
                             </div>   
                       

@@ -13,14 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', 'PublicController@index')->name('welcome');
 
 
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+Auth::routes();
 
 
 
@@ -28,8 +27,6 @@ Route::view('detalle','welcome')->name('detalle');
 Route::view('filtro','frontend.filter')->name('filtro');
 Route::view('aviso-privacidad','frontend.aviso-privacidad');
 
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 

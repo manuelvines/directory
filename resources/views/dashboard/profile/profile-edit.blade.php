@@ -134,15 +134,7 @@
 
                                                                 @if($languaje->id === $languaje_user->id)
                                                                 
-                                                                <!--
-                                                                <label class="checkbox">
-
-                                                                        {{ $languaje->name }} 
-                                                                        
-                                                                          <input type="checkbox" checked name="languajes[]" value="{{ $languaje->id }}">
-
-                                                                </label>
-                                                                 -->
+                                                               
                                                                 <div class="checkbox my-2">
                                                                     <div class="custom-control custom-checkbox">
                                                                       <input type="checkbox" checked class="custom-control-input"  id="customCheck{{ $languaje->id }}" name="languajes[]" value="{{ $languaje->id }}">
@@ -158,14 +150,8 @@
 
 
                                                         @if(!$flag)
-                                                        <!--
-                                                        <label class="checkbox-inline">{{ $languaje->name }}
-                                                      
-                                                        <input type="checkbox" name="languajes[]" value="{{ $languaje->id }}">
-                                                        </label>
--->
-
-                                                        <div class="checkbox my-2">
+                                              
+                                                                <div class="checkbox my-2">
                                                                     <div class="custom-control custom-checkbox">
                                                                       <input type="checkbox" class="custom-control-input" name="languajes[]" id="customCheck{{ $languaje->id }}"  value="{{ $languaje->id }}">
                                                                       <label class="custom-control-label"  for="customCheck{{ $languaje->id }}">{{ $languaje->name }} </label>

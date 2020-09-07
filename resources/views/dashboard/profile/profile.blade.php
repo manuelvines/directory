@@ -88,7 +88,7 @@
                                               <div class="form-group row">
                                                   <label for="bio" class="col-sm-2 col-form-label"><span class="text-danger">*</span> Ingrese su biografía:</label>
                                                   <div class="col-sm-10">
-                                                    <textarea id="bio"  name="bio" class="editor">{!!  old('bio') !!}"</textarea>
+                                                    <textarea id="bio"  name="bio" class="editor">{!!  old('bio') !!}</textarea>
                                                   </div>
                                               </div>
 

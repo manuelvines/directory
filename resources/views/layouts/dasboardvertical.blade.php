@@ -96,11 +96,6 @@
                             <li>
                                 <a href="calendar.html" class="waves-effect"><i class="mdi mdi-calendar-clock"></i><span> Calendar </span></a>
                             </li>
-
-                         
-                        
-               
-
                         </ul>
                     </div>
                     <div class="clearfix"></div>

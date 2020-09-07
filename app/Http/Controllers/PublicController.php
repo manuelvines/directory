@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Experience;
-
+use App\Tag;
 use App\Country;
 use App\State;
 
@@ -15,28 +15,32 @@ use App\State;
 class PublicController extends Controller
 {
     //
+    
+    public function index(){
 
+       $tags = Tag::all();
+       
+       return view('welcome')->with('tags',$tags);
+    }
      
     public function publicProfile($id)
     {
       
 
         $user = User::find($id);
-        
         $profile = $user->profile;
-        $languajes = $user->languajes;
-        $experiences = $user->experiences;
-
-        $country = Country::find($profile->country_id);
-        $state   = State::find($profile->state_id);
-
-     
-
+        
         if($profile == null){
 
             return redirect()->route('profile.index')
             ->withSuccess('Antes de visitar tu perfil deberás completar tu perfil.');
         }
+
+        $languajes = $user->languajes;
+        $experiences = $user->experiences;
+
+        $country = Country::find($profile->country_id);
+        $state   = State::find($profile->state_id);
 
         //return $experiences;
      
