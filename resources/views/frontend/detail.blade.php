@@ -26,9 +26,17 @@
 						<section id="description">
 							<div class="detail_title_1 text-center">
 
-                                  <div class="text-center"> 
-							        <img src="{{ $user->avatar }}" alt="{{ $user->avatar }}" class="img-fluid rounded-circle" style="max-width:100px;">
-                                  </div>
+                              
+                            @if( Auth::user()->avatar  == "avatar.jpg")
+							    <a href="{{ route('home')  }}">
+								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ asset('frontend/img/avatar.jpg') }}" alt="{{ Auth::user()->name }}">
+								</a> 
+							 @else
+								<a href="{{ route('home')  }}">
+								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
+								</a> 
+                             @endif
+
 
 								<div class="cat_star mt-3"><i class="icon_star"></i><i class="icon_star"></i>
 								<i class="icon_star"></i><i class="icon_star"></i></div>

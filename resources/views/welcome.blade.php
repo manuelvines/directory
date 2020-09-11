@@ -58,7 +58,7 @@
 					<div class="col-lg-4 col-md-6">
 						<a href="#" class="grid_item">
 							<figure>
-								<img src='{{ asset("frontend/img/categorias/$tag->tag_thumbnail") }}' alt="">
+								<img src='{{ asset("frontend/img/categorias/$tag->tag_thumbnail") }}' alt="" class="img-fluid">
 								<div class="info">
 									<small>122 Locations</small>
 									<h3>{{ $tag->name }}</h3>

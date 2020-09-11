@@ -15,6 +15,29 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->integer('people');
+            $table->double('amount_by_person');
+            $table->double('total')->nullable();
+            $table->integer('status');
+
+            $table->unsignedBigInteger('user_id');
+
+
+            $table->unsignedBigInteger('experience_id');
+
+            $table->foreign('user_id')->references('id')
+            ->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+
+            $table->foreign('experience_id')->references('id')
+            ->on('experiences')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+
             $table->timestamps();
         });
     }

@@ -32,7 +32,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/friend','Auth\VerificationController@terms')->name('terms');
 
-
 Route::get('/friend/{id}','PublicController@publicProfile')->name('friend');
 Route::get('/experiencia/{id}','PublicController@publicExperience')->name('experience');
 
@@ -58,3 +57,9 @@ Route::get('/geolocation','ProfileController@geolocation')->name('geolocation');
 *Experiencia
 */
 Route::resource('experience','ExperienceController');
+
+/*
+*Appoinments
+*/
+Route::resource('appointment','AppointmentController');
+

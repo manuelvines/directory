@@ -272,8 +272,12 @@
 								
 							</div>
 
+							<form  method="POST" action="{{ route('appointment.store') }}">
+							@csrf
+							@method('POST')
+
 							<div class="form-group" id="input-dates">
-								<input class="form-control" type="date" name="dates" min="{{ Date('y/m/d') }}" required>
+								<input class="form-control" type="date" name="date" min="{{ Date('y/m/d') }}" required>
 								<i class="icon_calendar"></i>
 							</div>
 
@@ -284,8 +288,23 @@
 								</div>
 							</div>
 
-							<input type="submit" value="Reservar" class="btn btn-block btn-naranja">
-					
+							 
+							      <input type="hidden" name="experience_id" id="experience_id" value="{{ $experience->id }}">
+
+							
+							
+							@guest
+											<a  class="social_bt facebook" href="{{ route('social.auth', 'facebook') }}">
+												Continuar con Facebook
+											</a>
+
+							@else
+							
+							   <input type="submit" value="Reservar" class="btn btn-block btn-naranja">
+
+							@endguest
+
+                            </form>
 
 							<div class="text-center"><small>Aún no se te cobrará nada</small></div>
 						</div>
