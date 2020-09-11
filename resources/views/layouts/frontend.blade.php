@@ -24,6 +24,8 @@
     <link href="{{  asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{  asset('frontend/css/style.css') }}" rel="stylesheet">
 	<link href="{{  asset('frontend/css/vendors.css') }}" rel="stylesheet">
+	<link href="{{  asset('frontend/css/blog.css') }}" rel="stylesheet">
+
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
@@ -215,8 +217,8 @@
     <script src="{{ asset('frontend/js/common_scripts.js') }}"></script>
 	<script src="{{ asset('frontend/js/functions.js') }}"></script>
 	<script src="{{ asset('frontend/assets/validate.js') }}"></script>
-    <!-- SPECIFIC SCRIPTS -->
-	<script src="{{ asset('frontend/js/animated_canvas_min.js') }}"></script>
+	
+
 	
 	@stack('scripts')
 
