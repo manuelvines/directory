@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\ReferenceCode;
+
+use App\ReferencedUser;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -64,10 +67,38 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+
+      
+           
+        /*
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        */
+
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+
+
+        $reference_code = ReferenceCode::where('code', $data['reference_code'] )->first(); 
+
+        if($reference_code != null && $user != null){
+
+            ReferencedUser::create([
+                'reference_code_id' => $reference_code->id,
+                'user_id' => $user->id
+            ]);
+        }
+        
+
+        return $user;
     }
 }

@@ -2,7 +2,6 @@
 @section('title','HostFriends')
 @section('content')
 
-@include('partials-frontend.header-detail') 
 
 <main>		
 	
@@ -27,13 +26,13 @@
 							<div class="detail_title_1 text-center">
 
                               
-                            @if( Auth::user()->avatar  == "avatar.jpg")
+                            @if( $user->avatar  == "avatar.jpg")
 							    <a href="{{ route('home')  }}">
-								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ asset('frontend/img/avatar.jpg') }}" alt="{{ Auth::user()->name }}">
+								  <img class="img-fluid rounded-circle"  style="width:100px;" src="{{ asset('frontend/img/avatar.jpg') }}" alt="{{ $user->name }}">
 								</a> 
 							 @else
 								<a href="{{ route('home')  }}">
-								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
+								  <img class="img-fluid rounded-circle"  style="width:100px;" src="{{ $user->avatar }}" alt="{{ $user->name }}">
 								</a> 
                              @endif
 
@@ -42,7 +41,7 @@
 								<i class="icon_star"></i><i class="icon_star"></i></div>
 								<h1>{{  $user->name  }}</h1
 								>
-								<a class="address" > {{ $country->name }} , {{ $state->name }} </a>
+								<a class="address" > {{ $country->name }}, {{ $state->name }} </a>
 							
 							
 								{!! $profile->bio !!}	

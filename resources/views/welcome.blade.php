@@ -1,8 +1,11 @@
-@extends('layouts.frontend')
+@extends('layouts.frontend-home')
 @section('title','HostFriends')
 
 @section('content')
-@include('partials-frontend.header-home') 
+
+	
+<div id="page" class="theia-exception">
+		
 
 
 
@@ -56,7 +59,7 @@
 				<div class="row">
 				    @foreach($tags as $tag)
 					<div class="col-lg-4 col-md-6">
-						<a href="#" class="grid_item">
+						<a href="{{  route('tag',$tag->id)  }}" class="grid_item">
 							<figure>
 								<img src='{{ asset("frontend/img/categorias/$tag->tag_thumbnail") }}' alt="" class="img-fluid">
 								<div class="info">

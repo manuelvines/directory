@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('title','HostFriends')
 @section('content')
- @include('partials-frontend.header-detail') 
+
 
 <main>		
 	
@@ -19,11 +19,16 @@
 		<div class="container margin_60_35">
 				<div class="row">
 					<div class="col-lg-8">
+
+					
 						<div id="carousel_in" class="owl-carousel owl-theme add_bottom_30">
 					      <div class="item"><img src="{{ asset('frontend/img/1920x600/1.png') }}" alt=""></div>
 					      <div class="item"><img src="{{ asset('frontend/img/1920x600/1.png') }}" alt=""></div>
 					      <div class="item"><img src="{{ asset('frontend/img/1920x600/1.png') }}" alt=""></div>
 					    </div>
+
+
+
 						<section id="description">
 							<div class="detail_title_1">
 
@@ -199,41 +204,8 @@
 
 							<div class="reviews-container">
 
-								<div class="review-box clearfix">
-									<figure class="rev-thumb"><img src="img/avatar1.jpg" alt="">
-									</figure>
-									<div class="rev-content">
-										<div class="rating">
-											<i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-										</div>
-										<div class="rev-info">
-											Admin – April 03, 2016:
-										</div>
-										<div class="rev-text">
-											<p>
-												Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-											</p>
-										</div>
-									</div>
-								</div>
-								<!-- /review-box -->
-								<div class="review-box clearfix">
-									<figure class="rev-thumb"><img src="img/avatar2.jpg" alt="">
-									</figure>
-									<div class="rev-content">
-										<div class="rating">
-											<i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-										</div>
-										<div class="rev-info">
-											Ahsan – April 01, 2016:
-										</div>
-										<div class="rev-text">
-											<p>
-												Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-											</p>
-										</div>
-									</div>
-								</div>
+							
+							
 								<!-- /review-box -->
 								<div class="review-box clearfix">
 									<figure class="rev-thumb"><img src="img/avatar3.jpg" alt="">
@@ -284,7 +256,7 @@
 				
 							<div class="form-group clearfix">
 								<div class="custom-select-form">
-								    <input type="number" name="people" id="people" min="1" max="{{  $experience->max_people  }}" class="form-control " required>
+								    <input type="number" name="people" id="people" min="1" max="{{  $experience->max_people  }}" placeholder="Máximo {{   $experience->max_people }} personas" class="form-control " required>
 								</div>
 							</div>
 
@@ -308,11 +280,15 @@
 
 							<div class="text-center"><small>Aún no se te cobrará nada</small></div>
 						</div>
+						
+                        <!--
 						<ul class="share-buttons">
 							<li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>
 							<li><a class="twitter-share" href="#0"><i class="social_twitter"></i> Share</a></li>
 							<li><a class="gplus-share" href="#0"><i class="social_googleplus"></i> Share</a></li>
 						</ul>
+                        -->
+
 					</aside>
 				</div>
 				<!-- /row -->

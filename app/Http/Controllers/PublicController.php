@@ -41,8 +41,9 @@ class PublicController extends Controller
 
         $country = Country::find($profile->country_id);
         $state   = State::find($profile->state_id);
+       
+        
 
-        //return $experiences;
      
         return view('frontend.detail')
         ->with('user', $user)
@@ -82,6 +83,18 @@ class PublicController extends Controller
 
 
 
+    }
+
+
+    public function showExperiencesByTag($id){
+
+        $experiences = Tag::find($id)->experiences;  
+        
+        $tags  =  Tag::all();
+
+        return view('frontend.filter')
+               ->with('experiences',  $experiences )
+               ->with('tags',  $tags );
     }
 
 

@@ -6,29 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-
-    <title>{{ config('app.name', 'HostFriends') }}</title>
-
-    <!-- Favicons-->
-	<link rel="icon" href="{{ asset('frontend/img/logo/logo-launcher.png') }}">
-
-    <!--
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
-     -->
+    <meta name="author" content="">
+    <title>HostFriends</title>
     <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <!-- BASE CSS -->
-    <link href="{{  asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{  asset('frontend/css/style.css') }}" rel="stylesheet">
-	<link href="{{  asset('frontend/css/vendors.css') }}" rel="stylesheet">
-	<link href="{{  asset('frontend/css/blog.css') }}" rel="stylesheet">
-    <!-- YOUR CUSTOM CSS -->
+    <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
+	<link href="{{ asset('frontend/css/vendors.css') }}" rel="stylesheet">
+	<!-- YOUR CUSTOM CSS -->
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
 
+	
 	<style>
 	.btn-naranja{
             background-color:#eb4d32;
@@ -43,34 +32,35 @@
 	</style>
 
 </head>
+
 <body>
-
-
-<div id="page" class="theia-exception">
 		
-        <header class="header_in">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-12">
-                        <div id="logo">
-                        <a href="{{ url('/') }}">
-                             <img src="{{ asset('frontend/img/logo/logo-naranja-svg.svg') }}" width="165" height="35" alt="" class="logo_sticky">
-                            </a>
-                        </div>
-                    </div>
+	<div id="page">
+		
+	<header class="header menu_fixed">
+            <div id="logo">
+                <a href="{{ url('/') }}" title="">
+                    <img src="{{ asset('frontend/img/logo/logo-blanco-svg.svg') }}" width="165" height="35" alt="" class="logo_normal">
+                    <img src="{{ asset('frontend/img/logo/logo-naranja-svg.svg') }}" width="165" height="35" alt="" class="logo_sticky">
+                </a>
+            </div>
+    
+    
+            <ul id="top_menu">
+                <li><a href="{{ route('experience.create') }}" class="btn_add">PUBLICAR EXPERIENCÍA</a></li>
+    
+    
+                @guest
+      
 
-                    <div class="col-lg-9 col-12">
-                        <ul id="top_menu">
-							<li><a href="{{ route('experience.create') }}" class="btn_add">PUBLICAR EXPERIENCÍA</a></li>
+                <li><a href="#sign-in-dialog" id="sign-in" class="login" class="btn_add">Explorar</a></li>
 
-                            @guest
-                <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
                 @else
                 
                 <li>
                   
 
-                    @if( Auth::user()->avatar  == "avatar.jpg")
+                            @if( Auth::user()->avatar  == "avatar.jpg")
 							    <a href="{{ route('home')  }}">
 								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ asset('frontend/img/avatar.jpg') }}" alt="{{ Auth::user()->name }}">
 								</a> 
@@ -84,38 +74,33 @@
                 </li>
     
                 @endguest
-                        
-                        </ul>
-                        <!-- /top_menu -->
-                        <a href="#menu" class="btn_mobile">
-                            <div class="hamburger hamburger--spin" id="hamburger">
-                                <div class="hamburger-box">
-                                    <div class="hamburger-inner"></div>
-                                </div>
-                            </div>
-                        </a>
-                      
-                        <nav id="menu" class="main-menu">
-                            <ul>
-                                <li><span><a href="{{  route('home') }}">Inico</a></span></li>
-                                <li><span><a href="{{  route('home') }}">Busca Experiencía</a></span></li>
-                        
-                            </ul>
-                        </nav>
-                        
+                
+                <li><a href="#" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+            </ul>
+            <!-- /top_menu -->
+            <a href="#menu" class="btn_mobile">
+                <div class="hamburger hamburger--spin" id="hamburger">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
                     </div>
                 </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->		
+            </a>
+            <nav id="menu" class="main-menu">
+                <ul>
+                    <li><span><a href="#0">Inicio</a></span></li>
+                    <li><span><a href="#0">Buscar Experiencia</a></span></li>
+               
+                </ul>
+            </nav>
         </header>
-        <!-- /header -->
-        
+	<!-- /header -->
 	
 	<main class="pattern">
-         @yield('content')
+			<main class="pattern">
+				@yield('content')
 
 
+			</main>
 	</main>
 	<!-- /main -->
 
@@ -197,8 +182,8 @@
 				</div>
 				<div class="col-lg-6">
 					<ul id="additional_links">
-						<li><a href="#0">Términos y condiciones</a></li>
-						<li><a href="#0">Política de Privacidad</a></li>
+						<li><a href="{{ route('terms-front') }}">Términos y condiciones</a></li>
+						<li><a href="{{ route('aviso-privacidad') }}">Aviso de Privacidad</a></li>
 						<li><span>© 2020 HostFriends</span></li>
 					</ul>
 				</div>
@@ -209,8 +194,9 @@
 	</div>
 	<!-- page -->
 	
-	<!-- Sign In Popup -->
-	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+
+		<!-- Sign In Popup -->
+		<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
 		<div class="small-dialog-header">
 			<h3>Iniciar Sesión</h3>
 		</div>
@@ -280,10 +266,8 @@
     <script src="{{ asset('frontend/js/common_scripts.js') }}"></script>
 	<script src="{{ asset('frontend/js/functions.js') }}"></script>
 	<script src="{{ asset('frontend/assets/validate.js') }}"></script>
-	<script src="{{ asset('frontend/assets/js/animated_canvas_min.j') }}"></script>
-
-	@stack('scripts')
-
+   <!-- SPECIFIC SCRIPTS -->
+	<script src="{{ asset('frontend/js/animated_canvas_min.js') }}"></script>
 
 </body>
 </html>

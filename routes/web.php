@@ -23,18 +23,17 @@ Auth::routes();
 
 
 
-Route::view('detalle','welcome')->name('detalle');
 Route::view('filtro','frontend.filter')->name('filtro');
-Route::view('aviso-privacidad','frontend.aviso-privacidad');
+Route::view('aviso-privacidad','frontend.aviso-privacidad')->name('aviso-privacidad');
+Route::view('terms-front','frontend.terms')->name('terms-front');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/friend','Auth\VerificationController@terms')->name('terms');
-
 Route::get('/friend/{id}','PublicController@publicProfile')->name('friend');
 Route::get('/experiencia/{id}','PublicController@publicExperience')->name('experience');
-
+Route::get('/tag/{id}', 'PublicController@showExperiencesByTag')->name('tag');
 
 
 
@@ -62,4 +61,11 @@ Route::resource('experience','ExperienceController');
 *Appoinments
 */
 Route::resource('appointment','AppointmentController');
+Route::get('acept-appointment/{id}','AppointmentController@accept')->name('acept-appointment');
+Route::get('reject-appointment/{id}','AppointmentController@reject')->name('reject-appointment');
 
+/**
+ * Notifications
+ */
+Route::get('view-notification/{id}', 'NotificationController@show')->name('view-notification');
+Route::get('mark-all-asread','NotificationController@markAllasRead')->name('mark-all-asread');

@@ -2,7 +2,6 @@
 @section('title','HostFriends')
 @section('content')
 
-@include('partials-frontend.header-detail') 
 
 <main>		
 	

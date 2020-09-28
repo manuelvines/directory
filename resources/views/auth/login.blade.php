@@ -2,14 +2,13 @@
 @section('title','HostFriends')
 @section('content')
 
-@include('partials-frontend.header-detail') 
 
 <main>		
 	
 		<nav class="secondary_nav sticky_horizontal_2">
 			<div class="container">
 				<ul class="clearfix">
-					<li><a href="{{ url('welcome') }}" class="active">Home</a></li>
+					<li><a href="{{ url('welcome') }}" class="active">Login</a></li>
 					<li><a href="#reviews">&nbsp;</a></li>
 				
 				</ul>
@@ -129,7 +128,9 @@
                               </a>
 							</div>
 							<div class="col-lg-6 pl-lg-1">
-								<a href="#0" class="social_bt google">Continuar con Google</a>
+							  <a href="#0" class="social_bt google">
+							  Registrarse con Google
+							  </a>
 							</div>
 					</div>
                          
@@ -177,7 +178,7 @@
                 </div>
 
 
-				<div class="form-group row">
+				        <div class="form-group row">
                             <label for="password-confirm" class="col-md-12 col-form-label">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-12">
@@ -185,6 +186,24 @@
 							
 
 						    </div>
+                        </div>
+
+
+						<div class="form-group row">
+                            <label for="reference_code" class="col-md-12 col-form-label"> Código de referencía </label>
+							<div class="col-md-12">
+
+								@if( isset($_REQUEST['referenced_code'])  )
+								
+								<input value="{{  $_REQUEST['referenced_code'] }}" id="reference_code" name="reference_code" type="text" class="form-control" readonly>
+							    
+								@else
+
+								<input id="reference_code" name="reference_code" type="text" class="form-control">
+
+
+								@endif
+							</div>
                         </div>
 
 
