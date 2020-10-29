@@ -69,3 +69,10 @@ Route::get('reject-appointment/{id}','AppointmentController@reject')->name('reje
  */
 Route::get('view-notification/{id}', 'NotificationController@show')->name('view-notification');
 Route::get('mark-all-asread','NotificationController@markAllasRead')->name('mark-all-asread');
+
+//PAGOS
+Route::get('/checkout/{slug}', 'PaymentController@checkout')->name('checkout');
+Route::post('/payments/pay','PaymentController@pay')->name('pay');
+Route::get('/payments/approval','PaymentController@approval')->name('approval');
+Route::get('/payments/cancelled','PaymentController@cancelled')->name('cancelled');
+Route::view('/thanks','frontend.thanks')->name('thanks');

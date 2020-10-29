@@ -22,9 +22,11 @@ class CreateExperiencesTable extends Migration
             $table->string('slug')->unique();
 
             $table->string('experience_thumbnail')->nullable();
-            $table->string('initial_schedule');
-            $table->string('final_schedule');
             
+            $table->time('initial_schedule');
+            $table->time('final_schedule');
+            $table->time('duration')->nullable();
+
             $table->integer('max_people');
 
             $table->longText('description');

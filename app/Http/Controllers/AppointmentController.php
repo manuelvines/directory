@@ -20,11 +20,13 @@ class AppointmentController extends Controller
 
     public function store(Request $request)
     {
-        
-        $experience_user = Experience::find($request->experience_id)->user;
+
+        $experience = Experience::find($request->experience_id)->first();
+
+    
         
         //usuario intenta hacer cita asi mismo
-        if($experience_user->id ===Auth::ID() ){
+        if($experience->user_id ===Auth::ID() ){
             return "no puedes hacer una cita a ti mismo";
         }
 
@@ -32,13 +34,17 @@ class AppointmentController extends Controller
         $appointment = new Appointment;
 
         $appointment->date              = $request->date;
+        $appointment->initial_schedule  = $request->initial_schedule_hour .":".  $request->initial_schedule_minute;
+        $appointment->duration          = $experience->duration;
         $appointment->people            = $request->people;
         $appointment->amount_by_person  = 10;
         $appointment->total             = $request->people * 10;
         $appointment->status            = 0;
-        $appointment->user_id           = Auth::ID();
+        $appointment->visitor_id        = Auth::ID();
+        $appointment->guide_id          = $experience->user_id;
         $appointment->experience_id     = $request->experience_id;
         $appointment->save();
+
         //$hostfriend->notify(new AppointmentRequest($appointment));
         event(new AppointmentRequestEvent($appointment));
 

@@ -14,11 +14,11 @@ class NotificationController extends Controller
     public function show($id){
 
 
-        $appointment = Appointment::find($id);
-
+        $appointment = Appointment::find($id); 
+        
         $experience  = Experience::find($appointment->experience_id);
         
-        $user_requesting = User::find($appointment->user_id);
+        $user_requesting = User::find($appointment->visitor_id);
 
         return view('dashboard.appointment.index')
                ->with('appointment',$appointment)

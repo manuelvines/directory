@@ -68,19 +68,25 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
+       
+ 
         //
         $this->validate($request, [
-            'title' => 'required',
-            'experience_thumbnail' => 'required|image|max:500000',
+            'title'                   => 'required',
+            'experience_thumbnail'    => 'required|image|max:500000',
 
-            'initial_schedule' => 'required',
-            'final_schedule' => 'required',
-            'max_people' => 'required',
-            'description' => 'required',
-            'tips' => 'required',
-            'country_id' => 'required',
-            'state_id' => 'required',
-            'tags' => 'required|min:1'
+            'initial_schedule_hour'   => 'required',
+            'initial_schedule_minute' => 'required',
+
+            'final_schedule_hour'     => 'required',
+            'final_schedule_minute'   => 'required',
+
+            'max_people'              => 'required',
+            'description'             => 'required',
+            'tips'                    => 'required',
+            'country_id'              => 'required',
+            'state_id'                => 'required',
+            'tags'                    => 'required|min:1'
             
         ]);
 
@@ -103,8 +109,12 @@ class ExperienceController extends Controller
 
         $experience->experience_thumbnail = asset($path);
 
-        $experience->initial_schedule =  $request->initial_schedule;
-        $experience->final_schedule =  $request->final_schedule;
+        $experience->initial_schedule =  $request->initial_schedule_hour .":".$request->initial_schedule_minute;
+
+        $experience->final_schedule =  $request->final_schedule_hour .":". $request->final_schedule_minute ;
+
+        $experience->duration = $request->hour_duration .":". $request->minutes_duration;
+   
 
         $experience->max_people = $request->max_people;
 

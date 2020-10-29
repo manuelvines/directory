@@ -60,16 +60,90 @@
 
                      <div class="form-group row">
                      <label for="" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Desde:</label>
-                     <div class="col-sm-10">
-                          <input  class="form-control" type="time" name="initial_schedule"  id="initial_schedule" value="{{ old('initial_schedule') }}">
+                         
+                         <div class="col-sm-5">
+                          
+                          <select name="initial_schedule_hour" id="initial_schedule_hour" class="form-control">
+                          
+                                  @for($i = 0; $i <= 23; $i++)
+                                       @if($i < 10)
+                                       <option value="0{{$i}}">0{{$i}}</option>
+                                       @else
+                                       <option value="{{$i}}">{{$i}}</option>
+                                       @endif
+                                  @endfor
+                          
+
+                          </select>
+                          <span>Horas</span>
+
+                        </div>
+                        <div class="col-sm-5">
+                        
+                          <select name="initial_schedule_minute" id="initial_schedule_minute" class="form-control">
+                                 <option value="00">00</option>
+                                 <option value="15">15</option>
+                                 <option value="30">30</option>
+                                 <option value="45">45</option>
+                          </select>
+                          <span>Minutos</span>
+
                         </div>
                      </div> 
 
 
                      <div class="form-group row">
                      <label for="" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Hasta:</label>
-                        <div class="col-sm-10">
-                            <input  class="form-control" type="time" name="final_schedule" id="final_schedule" value="{{ old('final_schedule') }}">
+                        <div class="col-sm-5">
+                          <select name="final_schedule_hour" id="final_schedule_minute" class="form-control">
+                                   @for($i = 0; $i <= 59; $i++)
+                                       @if($i < 10)
+                                       <option value="0{{$i}}">0{{$i}}</option>
+                                       @else
+                                       <option value="{{$i}}">{{$i}}</option>
+                                       @endif
+                                  @endfor
+                          </select>      
+                          <span>Horas</span>
+                 
+                        </div>
+                        <div class="col-sm-5">
+
+                          <select name="final_schedule_minute" id="final_schedule_minute" class="form-control">
+                                 <option value="00">00</option>
+                                 <option value="15">15</option>
+                                 <option value="30">30</option>
+                                 <option value="45">45</option>
+                          </select>  
+                          <span>Minutos</span>
+                     
+                       </div>
+                     </div>
+
+                     <div class="form-group row">
+                     <label for="" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Duración:</label>
+                        <div class="col-sm-5 col-md-5 col-lg-5">
+                             <select name="hour_duration" id="hour_duration" class="form-control">
+                                  @for($i = 0; $i <= 23; $i++)
+                                       @if($i < 10)
+                                       <option value="0{{$i}}">0{{$i}}</option>
+                                       @else
+                                       <option value="{{$i}}">{{$i}}</option>
+                                       @endif
+                                  @endfor
+                             </select>
+                             <span>Horas</span>
+                        </div>
+                        <div class="col-sm-5 col-md-5 col-lg-5">
+                            <select name="minutes_duration" id="minutes_duration" class="form-control">
+                                 <option value="00">00</option>
+                                 <option value="15">15</option>
+                                 <option value="30">30</option>
+                                 <option value="45">45</option>
+
+                             </select>
+                             <span>Minutos</span>
+
                         </div>
                      </div>
 

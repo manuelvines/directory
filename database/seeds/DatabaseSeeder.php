@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StateSeeder::class);
         $this->call(LanguajesSeeder::class);
         $this->call(TagSeeder::class);
+        $this->call(PaymentPlatformSeeder::class);
     }
 }

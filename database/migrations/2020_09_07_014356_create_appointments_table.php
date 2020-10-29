@@ -16,24 +16,35 @@ class CreateAppointmentsTable extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->date('date');
+            $table->time('initial_schedule');
+            $table->time('duration');
             $table->integer('people');
             $table->double('amount_by_person');
             $table->double('total')->nullable();
             $table->integer('status');
 
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('visitor_id');
+            $table->unsignedBigInteger('guide_id');
 
 
             $table->unsignedBigInteger('experience_id');
 
-            $table->foreign('user_id')->references('id')
+     
+
+            $table->foreign('experience_id')->references('id')
+            ->on('experiences')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+            
+            $table->foreign('visitor_id')->references('id')
             ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-
-            $table->foreign('experience_id')->references('id')
-            ->on('experiences')
+                   
+            $table->foreign('guide_id')->references('id')
+            ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
