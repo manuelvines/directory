@@ -239,49 +239,75 @@
 					</div>
 					<!-- /col -->
 					
+				
 					<aside class="col-lg-4" id="sidebar">
 						<div class="box_detail booking">
 							<div class="price">
-								<span>45$ <small>por hora</small></span>
-								
-								
+								<span>45$ <small>por persona</small></span>
 								<div class="score"><span>Good<em>50 Reseñas</em></span><strong>4.5</strong></div>
-								
+							
+
 							</div>
-
-							<form  method="POST" action="{{ route('appointment.store') }}">
-							@csrf
-							@method('POST')
-
-							<div class="form-group" id="input-dates">
-								<input class="form-control" type="date" name="date" min="{{ Date('y/m/d') }}" required>
-								<i class="icon_calendar"></i>
-							</div>
-
-				
-							<div class="form-group clearfix">
-								<div class="custom-select-form">
-								    <input type="number" name="people" id="people" min="1" max="{{  $experience->max_people  }}" placeholder="Máximo {{   $experience->max_people }} personas" class="form-control " required>
-								</div>
-							</div>
-
+                             <div class="alert alert-info">
 							 
-							      <input type="hidden" name="experience_id" id="experience_id" value="{{ $experience->id }}">
+							 <p>
+							 Experiencía desde: {{ $experience->initial_schedule }} y hasta {{ $experience->final_schedule }} h.<br>
+                            Duración: {{ $experience->duration }} h.</p>
+							 </div>
+							<form  method="POST" action="{{ route('appointment.store') }}">
+								@csrf
+								@method('POST')
+								<div class="form-group" id="input-dates">
+  								  
+									<input class="form-control" type="date" name="date" min="{{ Date('y/m/d') }}" required>
+									<i class="icon_calendar"></i>
+								</div>
 
-							
-							
-							@guest
-											<a  class="social_bt facebook" href="{{ route('social.auth', 'facebook') }}">
-												Continuar con Facebook
-											</a>
+								<div class="form-group">
+								    <div class="row">
+									   <div class="col-xs-6 col-sm-6 col-md-6">
+                                         
+										  <?php  $initial  = intval($experience->initial_schedule); ?>
+										  <?php  $final    = intval($experience->final_schedule); ?>
+										  <?php  $duration = intval($experience->duration); ?>
 
-							@else
-							
-							   <input type="submit" value="Reservar" class="btn btn-block btn-naranja">
+										
+										  <select name="initial_schedule_hour" id="initial_schedule_hour" style="display:block" class="form-control">
+										     @for($i = $initial; $i <= $final - $duration; $i++)
+                                                  <option value="{{$i}}">{{ $i }}</option>
+											 @endfor
+										  </select>
+										  <small>Horas</small>
 
-							@endguest
+									   </div>
+									   <div class="col-xs-6 col-sm-6 col-md-6">
+									      <select name="initial_schedule_minute" id="initial_schedule_minute" style="display:block" class="form-control">
+                                           
+										    <option value="00">00</option>
+											<option value="15">15</option>
+											<option value="30">30</option>
+											<option value="45">45</option>
 
-                            </form>
+										  </select>
+										  <small>Minutos</small>
+                                       </div>
+									</div>
+								</div>
+
+								<div class="form-group clearfix">
+									<div class="custom-select-form">
+										<input type="number" name="people" id="people" min="1" max="{{  $experience->max_people  }}" placeholder="Máximo {{   $experience->max_people }} personas" class="form-control " required>
+									</div>
+								</div>
+								<input type="hidden" name="experience_id" id="experience_id" value="{{ $experience->id }}">
+								@guest
+								<a  class="social_bt facebook" href="{{ route('social.auth', 'facebook') }}">
+								Continuar con Facebook
+								</a>
+								@else
+								<input type="submit" value="Reservar" class="btn btn-block btn-naranja">
+								@endguest
+							</form>
 
 							<div class="text-center"><small>Aún no se te cobrará nada</small></div>
 						</div>
