@@ -274,7 +274,7 @@
 
 </div>
 </div>
- @push('scripts')
-<script src="{{ asset('dashboard/js/statesByCountry.js') }}"></script>
-@endpush
+      @push('scripts')
+         <script src="{{ asset('dashboard/js/statesByCountry.js') }}"></script>
+      @endpush
 @endsection

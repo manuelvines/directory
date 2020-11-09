@@ -85,8 +85,8 @@
 									</a>
 								</h3>
 								<p>{!! $experience->description !!}</p>
-								<a class="address" >{{ $experience->country->name }},</a>
-								<a>{{ $experience->state->name }}</a>
+								<a class="address" >{{  $experience->country  }}</a>
+								<a>{{  $experience->state  }}</a>
 							</div>
 					
 						</div>

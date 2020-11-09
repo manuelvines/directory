@@ -9,7 +9,7 @@ use App\Experience;
 use App\Tag;
 use App\Country;
 use App\State;
-
+use DB;
 
 
 class PublicController extends Controller
@@ -19,8 +19,11 @@ class PublicController extends Controller
     public function index(){
 
        $tags = Tag::all();
+       $countries = Country::all();
        
-       return view('welcome')->with('tags',$tags);
+       return view('welcome')
+         ->with('tags',$tags)
+         ->with('countries',$countries);
     }
      
     public function publicProfile($id)
@@ -96,7 +99,30 @@ class PublicController extends Controller
                ->with('experiences',  $experiences )
                ->with('tags',  $tags );
     }
+    
+    public function search(){
 
+        //$_REQUEST['query'] . $_REQUEST['country_id'] . $_REQUEST['tag'];
+        $tags  =  Tag::all();
+
+        $experiences = DB::table('experiences')
+                       ->select('experiences.title','experiences.slug','experiences.experience_thumbnail', 'users.name', 'users.avatar', 'experiences.description','countries.name as country','states.name as state')
+                       ->join('countries','countries.id','=','experiences.country_id')
+                       ->join('users','users.id','=','experiences.user_id')
+                       ->join('states','states.id','=','experiences.state_id')
+                       ->where('experiences.title','like',  '%' . $_REQUEST['query'] .'%' )
+                       ->orWhere('experiences.country_id','=', $_REQUEST['country_id'])
+                       ->orWhere('experiences.country_id','=', $_REQUEST['country_id'])
+                       ->paginate(20);
+            
+                  
+        
+                       return view('frontend.filter')
+                       ->with('experiences',  $experiences )
+                       ->with('tags',  $tags );
+
+
+    }
 
 
 }

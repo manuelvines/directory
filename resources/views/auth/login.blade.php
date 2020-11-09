@@ -24,19 +24,21 @@
 			<div class="row justify-content-center">
 			<div class="col-xl-6 col-lg-6 col-md-8">
 				<div class="box_account">
-					<h3 class="client">Usuario Registrado</h3>
+					<h3 class="client">Iniciar Sesión</h3>
 					<div class="form_container">
 						<div class="row no-gutters">
-							<div class="col-lg-6 pr-lg-1">
+							<div class="col-lg-12 pr-lg-1">
 
 
                             <a  class="social_bt facebook" href="{{ route('social.auth', 'facebook') }}">
                               Continuar con Facebook
                               </a>
 							</div>
+							<!--
 							<div class="col-lg-6 pl-lg-1">
 								<a href="#0" class="social_bt google">Continuar con Google</a>
 							</div>
+-->
 						</div>
 						<div class="divider"><span>O</span></div>
        
@@ -44,8 +46,8 @@
                         @csrf
 
 						<div class="form-group">
-						   
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+						         <label for="email">Correo electrónico</label>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -56,7 +58,8 @@
                         
 						<div class="form-group">
 							<div class="hideShowPassword-wrapper" style="position: relative; display: block; vertical-align: baseline; margin: 0px;">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+							<label for="password">Ingrese contraseña</label>
+							<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -64,7 +67,8 @@
                                 </span>
                             @enderror
                            
-                            <button type="button" role="button" aria-label="Show Password" title="Show Password" tabindex="0" class="my-toggle hideShowPassword-toggle-show" 
+							<button type="button" role="button" 
+							aria-label="Show Password" title="Show Password" tabindex="0" class="my-toggle hideShowPassword-toggle-show" 
                             style="position: absolute; right: 0px; top: 50%; margin-top: -15px; display: none;" aria-pressed="false">Show</button></div>
 						</div>
 
@@ -81,7 +85,7 @@
 						</div>
 
 						<div class="text-center">
-                        <input type="submit" value="Log In" class="btn_1 full-width">
+                        <input type="submit" value="Iniciar Sesión" class="btn_1 full-width">
                         </div>
 
 						<div id="forgot_pw">
@@ -122,16 +126,19 @@
 					
 
                     <div class="row no-gutters">
-							<div class="col-lg-6 pr-lg-1">
+							<div class="col-lg-12 pr-lg-1">
                               <a  class="social_bt facebook" href="{{ route('social.auth', 'facebook') }}">
                               Registrarse con Facebook
                               </a>
 							</div>
+
+							<!--
 							<div class="col-lg-6 pl-lg-1">
 							  <a href="#0" class="social_bt google">
 							  Registrarse con Google
 							  </a>
 							</div>
+-->
 					</div>
                          
 

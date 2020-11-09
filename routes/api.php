@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/statesByCountry/{id}','StateController@statesByCountry')->name('statesByCountry');
+Route::get('/statesByLike/{param}','StateController@showLike')->name('statesByLike');

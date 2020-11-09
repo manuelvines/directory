@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\State;
 use Illuminate\Http\Request;
+use DB;
 
 class StateController extends Controller
 {
@@ -61,6 +62,23 @@ class StateController extends Controller
         //
   
     }
+    
+    
+    public function showLike($param)
+    {
+
+        $states = DB::table('states')
+                       ->join('countries','states.country_id','=','countries.id')
+                       ->select('states.name as state','countries.name as country')
+                       ->where('states.name','like',  '%' . $param .'%' )
+                       ->get();
+        
+
+        return $states;
+         
+
+    }
+
 
     /**
      * Show the form for editing the specified resource.

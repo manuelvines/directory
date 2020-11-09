@@ -267,7 +267,7 @@
 	<script src="{{ asset('frontend/js/functions.js') }}"></script>
 	<script src="{{ asset('frontend/assets/validate.js') }}"></script>
    <!-- SPECIFIC SCRIPTS -->
-	<script src="{{ asset('frontend/js/animated_canvas_min.js') }}"></script>
+   @stack('scripts')
 
 </body>
 </html>

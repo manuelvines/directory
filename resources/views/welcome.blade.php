@@ -14,22 +14,30 @@
 				<div class="container">
 					<h3>HOST FRIENDS</h3>
 					<p>@lang('HomeTagline')</p>
-					<form method="post" action="grid-listings-filterscol.html">
+				
+					<form method="GET" action="{{ url('buscar') }}">
 						<div class="row no-gutters custom-search-input-2">
 							<div class="col-lg-4">
 								<div class="form-group">
-									<input class="form-control" type="text" placeholder="{{ __('HomeFormKeyword') }}">
-									<i class="icon_search"></i>
+								  <input class="form-control" name="query" id="query" type="text" placeholder="¿Qué tipo de experiencía estás buscando?">
+								  <i class="icon_search"></i>						
+																
 								</div>
 							</div>
 							<div class="col-lg-3">
 								<div class="form-group">
-									<input class="form-control" type="text" placeholder="{{ __('HomeFormWhere') }}">
-									<i class="icon_pin_alt"></i>
+								   
+								<select class="wide" name="country_id" id="country_id">
+									          <option>Selecciona país</option>	
+											 @foreach($countries as $country)
+									           <option value="{{ $country->id }}">{{ $country->name }}</option>
+										     @endforeach
+									</select>
+
 								</div>
 							</div>
 							<div class="col-lg-3">
-								<select class="wide">
+								<select class="wide" name="tag" id="tag">
 									<option>Categorias</option>	
 									@foreach($tags as $tag)
 									<option href="{{ $tag->id }}">{{ $tag->name }}</option>	
@@ -39,6 +47,8 @@
 							<div class="col-lg-2">
 								<input type="submit" value="{{ __('Search') }}">
 							</div>
+
+
 						</div>
 						<!-- /row -->
 					</form>
@@ -75,4 +85,8 @@
 			<!-- /container -->	
 		</div>
 
+
+		@push('scripts')
+         <script src="{{ asset('dashboard/js/statesByCountry.js') }}"></script>
+        @endpush
 @endsection
