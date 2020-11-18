@@ -17,19 +17,21 @@ class PaymentPlatformResolver
         $this->paymentPlatforms = PaymentPlatform::all();
     }
 
+
+
     public function resolverService($paymentPlatformId)
     {
 
-       
+
+  
         //obtenemos el name del método de pago
         $name = strtolower( $this->paymentPlatforms->firstWhere('id', $paymentPlatformId)->name);
 
-      
+        return dd($this->paymentPlatforms);
 
         //buscamos el services en config/services.php
         $service = config("services.{$name}.class");
 
-        return dd($service);
 
         if($service){
             return resolve($service);
