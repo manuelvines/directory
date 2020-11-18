@@ -19,9 +19,9 @@ class PaymentPlatformResolver
 
     public function resolverService($paymentPlatformId)
     {
-         
-        return $paymentPlatformId;
-        
+
+        return dd($paymentPlatformId);
+
         //obtenemos el name del método de pago
         $name = strtolower( $this->paymentPlatforms->firstWhere('id', $paymentPlatformId)->name);
 
