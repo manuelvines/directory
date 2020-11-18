@@ -24,8 +24,7 @@ class PaymentPlatformResolver
         //obtenemos el name del método de pago
         $name = strtolower( $this->paymentPlatforms->firstWhere('id', $paymentPlatformId)->name);
 
-        return dd($service);
-
+      
 
         //buscamos el services en config/services.php
         $service = config("services.{$name}.class");
