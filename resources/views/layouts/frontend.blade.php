@@ -63,14 +63,16 @@
                         <ul id="top_menu">
 							<li><a href="{{ route('experience.create') }}" class="btn_add">PUBLICAR EXPERIENCÍA</a></li>
 
-                            @guest
+
+                            
+							@guest
                 <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
                 @else
                 
                 <li>
                   
 
-                    @if( Auth::user()->avatar  == "avatar.jpg")
+                            @if( Auth::user()->avatar  == "avatar.jpg")
 							    <a href="{{ route('home')  }}">
 								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ asset('frontend/img/avatar.jpg') }}" alt="{{ Auth::user()->name }}">
 								</a> 
@@ -81,8 +83,25 @@
                              @endif
 
 
+							 <ul>
+					                <li><a href="404.html">404 page</a></li>
+					                <li><a href="contacts-2.html">Contacts 2</a></li>
+					                <li><a href="pricing-tables.html">Pricing tables</a></li>
+					                <li><a href="login.html">Login</a></li>
+					                <li><a href="register.html">Register</a></li>
+					                <li><a href="menu-options.html">Menu Options</a></li>
+					                <li><a href="invoice.html">Invoice</a></li>
+					                <li><a href="coming_soon/index.html">Coming Soon</a></li>
+					            </ul>
+
+
+
+
                 </li>
-    
+
+
+			
+
                 @endguest
                         
                         </ul>
@@ -99,7 +118,18 @@
                             <ul>
                                 <li><span><a href="{{  route('home') }}">Inico</a></span></li>
                                 <li><span><a href="{{  route('home') }}">Busca Experiencía</a></span></li>
-                        
+								<li><span><a href="#0">Extra</a></span>
+					            <ul>
+					                <li><a href="404.html">404 page</a></li>
+					                <li><a href="contacts-2.html">Contacts 2</a></li>
+					                <li><a href="pricing-tables.html">Pricing tables</a></li>
+					                <li><a href="login.html">Login</a></li>
+					                <li><a href="register.html">Register</a></li>
+					                <li><a href="menu-options.html">Menu Options</a></li>
+					                <li><a href="invoice.html">Invoice</a></li>
+					                <li><a href="coming_soon/index.html">Coming Soon</a></li>
+					            </ul>
+					        </li>
                             </ul>
                         </nav>
                         

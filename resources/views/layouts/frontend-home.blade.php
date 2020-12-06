@@ -46,37 +46,19 @@
             </div>
     
     
-            <ul id="top_menu">
+            <ul id="top_menu" class="mt-2">
                 <li><a href="{{ route('experience.create') }}" class="btn_add">PUBLICAR EXPERIENCÍA</a></li>
-    
-    
-                @guest
-      
-
-                <li><a href="#sign-in-dialog" id="sign-in" class="login" class="btn_add">Explorar</a></li>
-
-                @else
-                
-                <li>
-                  
-
-                            @if( Auth::user()->avatar  == "avatar.jpg")
-							    <a href="{{ route('home')  }}">
-								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ asset('frontend/img/avatar.jpg') }}" alt="{{ Auth::user()->name }}">
-								</a> 
-							 @else
-								<a href="{{ route('home')  }}">
-								  <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
-								</a> 
-                             @endif
-
-
-                </li>
-    
-                @endguest
-                
+    		
+                <!--MODAL DE LOGIN-->
+                <!--
+				<li><a href="{{ route('login') }}" id="sign-in" class="login" class="btn_add">Explorar</a></li>
+                -->
+			
                 <li><a href="#" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
-            </ul>
+            
+			</ul>
+
+
             <!-- /top_menu -->
             <a href="#menu" class="btn_mobile">
                 <div class="hamburger hamburger--spin" id="hamburger">
@@ -89,7 +71,35 @@
                 <ul>
                     <li><span><a href="#0">Inicio</a></span></li>
                     <li><span><a href="#0">Buscar Experiencia</a></span></li>
-               
+					
+					
+					<li><span>
+					@if( Auth::user()->avatar  == "avatar.jpg")
+						<a href="{{ route('home')  }}">
+						 <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ asset('frontend/img/avatar.jpg') }}" alt="{{ Auth::user()->name }}">
+						</a> 
+					@else
+						<a href="{{ route('home')  }}">
+						 <img class="img-fluid rounded-circle"  style="width:40px;" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
+						</a> 
+                    @endif
+
+					</span>
+					            <ul>
+             						<li><a href="404.html">Ajustes</a></li>
+
+								    <li><a href="404.html">Ver perfil público</a></li>
+
+					                <li><a href="contacts-2.html">Contacts 2</a></li>
+					                <li><a href="pricing-tables.html">Pricing tables</a></li>
+					                <li><a href="login.html">Login</a></li>
+					                <li><a href="register.html">Register</a></li>
+					                <li><a href="menu-options.html">Menu Options</a></li>
+					                <li><a href="invoice.html">Invoice</a></li>
+					                <li><a href="coming_soon/index.html">Coming Soon</a></li>
+					            </ul>
+					        </li>
+
                 </ul>
             </nav>
         </header>
